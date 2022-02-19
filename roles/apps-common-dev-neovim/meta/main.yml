@@ -1,0 +1,3 @@
+dependencies:
+  - role: apps-common-dev-nodejs
+  - role: apps-common-dev-php

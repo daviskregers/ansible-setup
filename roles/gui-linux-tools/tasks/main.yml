@@ -1,0 +1,25 @@
+- name: Install desktop tools
+  become: true
+  package:
+    name:
+      - arandr
+      - lxrandr
+      - dmenu
+      - xterm
+      - dmenu
+      - nitrogen
+      - redshift
+      - dunst
+      - feh
+      - xdotool
+      - trayer
+      - gnome-calendar
+      - numlockx
+      - lxappearance
+    state: present
+- name: Install aur desktop tools
+  become: '{{ install_sudo }}'
+  yay:
+    name:
+      - compton
+      - plymouth

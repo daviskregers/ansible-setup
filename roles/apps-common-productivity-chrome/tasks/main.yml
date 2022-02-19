@@ -1,0 +1,10 @@
+- name: install chrome
+  become: '{{ install_sudo }}'
+  yay:
+    name: google-chrome
+  when: ansible_distribution != 'MacOSX'
+
+- name: install chrome
+  homebrew_cask:
+    name: google-chrome
+  when: ansible_distribution == 'MacOSX'

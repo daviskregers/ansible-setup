@@ -1,0 +1,8 @@
+- name: Install xorg
+  become: true
+  pacman:
+    name:
+      - xorg-server
+      - xorg-apps
+      - xorg-xinit
+    state: present

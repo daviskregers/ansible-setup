@@ -1,0 +1,5 @@
+- name: install peek
+  become: true
+  pacman:
+    name: peek
+  when: ansible_distribution != 'MacOSX'

@@ -1,0 +1,41 @@
+- name: Install neovim
+  become: '{{ install_sudo }}'
+  yay:
+    name: neovim-nightly-bin
+  when: ansible_distribution == 'Archlinux'
+
+- name: Install neovim
+  homebrew:
+    name: neovim
+  when: ansible_distribution == 'MacOSX'
+
+- name: Install python3.10 provider
+  command: python3 -m pip install --user --upgrade pynvim
+  when: ansible_distribution == 'MacOSX'
+
+- name: Install python3.10 provider
+  command: python3.10 -m pip install --user --upgrade pynvim
+  when: ansible_distribution != 'MacOSX'
+
+- name: make intelephense directory
+  file:
+    path: ~/intelephense
+    state: directory
+
+- name: copy intelephense license
+  template:
+    src: licence.txt
+    dest: ~/intelephense/licence.txt
+
+- name: install ripgrep
+  homebrew:
+    name:
+      - ripgrep
+  when: ansible_distribution == 'MacOSX'
+
+- name: install ripgrep
+  become: true
+  package:
+    name:
+      - ripgrep
+  when: ansible_distribution != 'MacOSX'

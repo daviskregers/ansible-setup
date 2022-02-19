@@ -1,0 +1,27 @@
+- name: install nodejs
+  become: true
+  package:
+    name: nodejs
+  when: ansible_distribution != 'MacOSX'
+
+- name: install nodejs
+  homebrew:
+    name: node
+  when: ansible_distribution == 'MacOSX'
+
+- name: install npm
+  become: true
+  package:
+    name: npm
+  when: ansible_distribution != 'MacOSX'
+
+- name: install yarn
+  become: true
+  package:
+    name: yarn
+  when: ansible_distribution != 'MacOSX'
+
+- name: install yarn
+  homebrew:
+    name: yarn
+  when: ansible_distribution == 'MacOSX'

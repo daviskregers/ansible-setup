@@ -1,0 +1,48 @@
+- import_tasks: set_package_name.yml
+
+- name: Install ssh
+  become: '{{ install_sudo }}'
+  package:
+    name: '{{ ssh_package }}'
+    state: present
+    update_cache: true
+
+- name: Copy hardening script
+  become: true
+  copy:
+    src: hardening.sh
+    dest: /usr/local/ssh-hardening.sh
+    mode: a+x
+  notify: hardening
+
+- name: Copy configuration
+  become: true
+  copy:
+    src: sshd_config
+    dest: /etc/ssh/sshd_config
+
+- name: Copy motd
+  become: true
+  copy:
+    src: motd
+    dest: /etc/ssh/motd
+
+- name: enable logging in syslog
+  become: true
+  lineinfile:
+    path: /etc/syslog.conf
+    line: '*.* /var/log/sshd/sshd.log'
+    create: yes
+
+- name: Make /run/sshd
+  become: true
+  file:
+    path: /run/sshd
+    state: directory
+
+- name: ssh service
+  become: true
+  systemd:
+    name: sshd
+    enabled: "{{ ssh.enabled | bool }}"
+    state: "{{  ssh.enabled | bool | ternary ('started', 'stopped') }}"

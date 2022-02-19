@@ -1,0 +1,5 @@
+- name: install mailspring
+  become: '{{ install_sudo }}'
+  yay:
+    name: mailspring
+  when: ansible_distribution != 'MacOSX'

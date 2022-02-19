@@ -1,0 +1,35 @@
+- name: install php
+  become: true
+  pacman:
+    name:
+      - php
+      - php-intl
+  when: ansible_distribution != 'MacOSX'
+
+- name: install php
+  homebrew:
+    name:
+      - php
+  when: ansible_distribution == 'MacOSX'
+
+- name: set PHP memory limit
+  become: true
+  ini_file:
+    path: /etc/php/php.ini
+    section: PHP
+    option: memory_limit
+    value: 2G
+
+- name: enable php extensions
+  become: true
+  lineinfile:
+    path: /etc/php/php.ini
+    regex: '^;extension={{ item }}'
+    line: 'extension={{ item }}'
+  with_items:
+    - "{{ php.extensions }}"
+
+- name: install composer
+  become: '{{ install_sudo }}'
+  package:
+    name: composer

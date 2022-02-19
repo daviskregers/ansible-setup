@@ -1,0 +1,11 @@
+- name: Install numlockx
+  become: true
+  package:
+    name: numlockx
+    state: latest
+- name: set greeter-setup-script
+  become: true
+  lineinfile:
+    path: /etc/lightdm/lightdm.conf
+    regexp: '#greeter-setup-script='
+    line: 'greeter-setup-script=/bin/numlockx on'

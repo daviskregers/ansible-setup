@@ -1,0 +1,37 @@
+- name: install cronie
+  become: true
+  package:
+    name: cronie
+
+- name: cron wrapper
+  become: true
+  template:
+    src: cronwrap
+    dest: /opt/cronwrap
+    mode: a+x
+
+- name: make cronie.d.service.d
+  become: true
+  file:
+    path: /etc/systemd/system/cronie.service.d/
+    state: directory
+
+- name: add cronie msmtp conf
+  become: true
+  copy:
+    src: msmtp.conf
+    dest: /etc/systemd/system/cronie.service.d/msmtp.conf
+
+- name: enable cronie
+  become: true
+  systemd:
+    name: cronie
+    enabled: true
+    state: restarted
+
+- name: schedule clamav
+  become: true
+  cron:
+    name: "fail"
+    job: /opt/cronwrap -c "/opt/failing-cron" -t '@here'
+    state: absent

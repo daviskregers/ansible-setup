@@ -1,0 +1,10 @@
+- name: install signal-desktop
+  become: true
+  pacman:
+    name: signal-desktop
+  when: ansible_distribution != 'MacOSX'
+
+- name: install signal-desktop
+  homebrew_cask:
+    name: signal
+  when: ansible_distribution == 'MacOSX'

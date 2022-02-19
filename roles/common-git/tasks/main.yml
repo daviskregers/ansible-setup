@@ -1,0 +1,22 @@
+
+- name: Install git
+  become: '{{ install_sudo }}'
+  package:
+    name: git
+    state: latest
+
+- name: Add a setting to ~/.gitconfig
+  become: false
+  community.general.git_config:
+    name: user.email
+    scope: global
+    value: '{{ git.user.email }}'
+  when: git.user.email is defined
+
+- name: Add a setting to ~/.gitconfig
+  become: false
+  community.general.git_config:
+    name: user.name
+    scope: global
+    value: '{{ git.user.name }}'
+  when: git.user.name is defined

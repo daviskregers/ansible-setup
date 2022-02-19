@@ -1,0 +1,10 @@
+- name: install postman
+  become: '{{ install_sudo }}'
+  yay:
+    name: postman-bin
+  when: ansible_distribution != 'MacOSX'
+
+- name: install postman
+  homebrew_cask:
+    name: postman
+  when: ansible_distribution == 'MacOSX'

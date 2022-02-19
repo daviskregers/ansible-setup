@@ -1,0 +1,17 @@
+- name: set display-setup-script
+  become: true
+  lineinfile:
+    path: /etc/lightdm/lightdm.conf
+    regexp: "#display-setup-script="
+    line: "display-setup-script=/home/{{ ansible_facts['user_id'] }}/.screenlayout/{{ ansible_facts['hostname'] }}.sh"
+- name: make screenlayout directory
+  become: false
+  file:
+    path: "/home/{{ ansible_facts['user_id'] }}/.screenlayout"
+    state: directory
+- name: touch screenlayout
+  become: false
+  file:
+    path: "/home/{{ ansible_facts['user_id'] }}/.screenlayout/{{ ansible_facts['hostname'] }}.sh"
+    mode: a+x
+    state: touch

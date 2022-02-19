@@ -1,0 +1,17 @@
+- name: Install nvidia drivers
+  become: true
+  pacman:
+    name:
+      - cudnn
+      - mesa-demos
+      - nvidia
+      - nvidia-dkms
+      - nvidia-settings
+      - nvidia-utils
+      - opencl-nvidia
+    state: present
+- name: blacklist nouveu
+  become: true
+  copy:
+    src: nvidia.conf
+    dest: /usr/lib/modprobe.d/nvidia.conf

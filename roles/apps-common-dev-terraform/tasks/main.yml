@@ -1,0 +1,21 @@
+- name: install terraformls
+  become: '{{ install_sudo }}'
+  yay:
+    name: terraform-ls-bin
+  when: ansible_distribution != 'MacOSX'
+
+- name: install terraformls
+  homebrew:
+    name: terraform-ls
+  when: ansible_distribution == 'MacOSX'
+
+- name: install tfswitch
+  become: '{{ install_sudo }}'
+  yay:
+    name: tfswitch
+  when: ansible_distribution != 'MacOSX'
+
+- name: install tfswitch
+  homebrew:
+    name: warrensbox/tap/tfswitch
+  when: ansible_distribution == 'MacOSX'

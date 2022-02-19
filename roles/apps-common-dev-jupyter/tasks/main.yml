@@ -1,0 +1,10 @@
+- name: install jupyter
+  become: '{{ install_sudo }}'
+  yay:
+    name: jupyter
+  when: ansible_distribution != 'MacOSX'
+
+- name: install jupyter
+  homebrew_cask:
+    name: jupyterlab
+  when: ansible_distribution == 'MacOSX'

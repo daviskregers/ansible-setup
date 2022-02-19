@@ -1,0 +1,10 @@
+- name: install haskelllangserver
+  become: true
+  pacman:
+    name: haskell-language-server
+  when: ansible_distribution != 'MacOSX'
+
+- name: install haskelllangserver
+  homebrew:
+    name: haskell-language-server
+  when: ansible_distribution == 'MacOSX'

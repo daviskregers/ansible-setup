@@ -1,0 +1,11 @@
+- name: install homeshick
+  git:
+    repo: git://github.com/andsens/homeshick.git
+    dest: ~/.homesick/repos/homeshick
+    clone: yes
+    update: yes
+- name: add homeshick to bashrc
+  lineinfile:
+    path: ~/.bashrc
+    regexp: '^source ~/\.homesick/repos/homeshick/homeshick.sh'
+    line: source ~/.homesick/repos/homeshick/homeshick.sh

@@ -1,0 +1,54 @@
+- name: Install fonts
+  become: true
+  package:
+    name:
+      - noto-fonts
+      - ttf-anonymous-pro
+      - ttf-dejavu
+      - ttf-fira-code
+      - ttf-font-awesome
+      - ttf-freefont
+      - ttf-hack
+      - ttf-liberation
+      - ttf-nerd-fonts-symbols
+      - ttf-ubuntu-font-family
+    state: latest
+  notify: Clear font cache
+  when: ansible_distribution != 'MacOSX'
+
+- name: Install aur fonts
+  become: '{{ install_sudo }}'
+  yay:
+    name:
+      - noto-fonts-emoji
+      - ttf-twemoji-color
+      - nerd-fonts-source-code-pro
+      - nerd-fonts-fira-code
+    state: latest
+  notify: Clear font cache
+  when: ansible_distribution != 'MacOSX'
+
+- name: Tapping homebrew/cask-fonts
+  homebrew_tap:
+    name: homebrew/cask-fonts
+  when: ansible_distribution == 'MacOSX'
+
+- name: install svn
+  homebrew:
+    name: svn
+  when: ansible_distribution == 'MacOSX'
+
+- name: Install fonts
+  homebrew_cask:
+    name:
+      - font-ubuntu
+      - font-dejavu
+      - font-fontawesome
+      - font-freefont
+      - font-liberation
+      - font-hack
+      - font-anonymous-pro
+      - font-fira-code
+      - font-sauce-code-pro-nerd-font
+      - font-fira-code-nerd-font
+  when: ansible_distribution == 'MacOSX'

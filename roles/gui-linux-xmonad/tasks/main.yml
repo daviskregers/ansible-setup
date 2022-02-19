@@ -1,0 +1,70 @@
+- name: Install xmonad
+  become: true
+  package:
+    name:
+      - glibc
+      - xmonad
+      - xmonad-contrib
+      - xterm
+      - network-manager-applet
+      - btop
+      - gnome-keyring
+    state: present
+- name: Install xmobar
+  become: '{{ install_sudo }}'
+  yay:
+    name: xmobar-git
+- name: copy xsession
+  become: false
+  copy:
+    src: xsession
+    dest: ~/.xsession
+- name: make .local/bin
+  become: false
+  file:
+    path: ~/.local/bin
+    state: directory
+- name: copy pacupdate
+  become: false
+  copy:
+    src: '{{ item }}'
+    dest: '~/.local/bin/{{ item }}'
+    mode: a+x
+  with_items:
+    - doupdate
+    - pacupdate
+- name: copy trayer-padding-icon
+  become: false
+  template:
+    src: trayer-padding-icon.sh
+    dest: ~/.local/bin/trayer-padding-icon.sh
+- name: mkdir
+  become: false
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - ~/.xmonad
+    - ~/.config/xmobar
+- name: copy xmonad.hs
+  become: false
+  template:
+    src: xmonad.hs
+    dest: ~/.xmonad/xmonad.hs
+  notify: recompile_xmonad
+- name: copy xmobar
+  become: false
+  template:
+    src: xmobarrc
+    dest: "~/.config/xmobar/xmobarrc-{{ item }}"
+  loop: "{{ range(0, gui.monitors, 1) | list }}"
+- name: mkdir dunst config
+  become: false
+  file:
+    path: ~/.config/dunst
+    state: directory
+- name: copy dunst file
+  become: false
+  copy:
+    src: dunstrc
+    dest: ~/.config/dunstrc

@@ -1,0 +1,54 @@
+- name: Add non-free repository
+  become: '{{ install_sudo }}'
+  apt_repository:
+    repo: "deb-src http://archive.raspbian.org/raspbian {{ ansible_facts['lsb']['codename'] }} main contrib non-free rpi"
+    state: present
+  when: ansible_distribution != 'MacOSX' and ansible_facts['distribution'] != 'Archlinux' and ansible_facts['lsb']['id'] == 'Raspbian'
+
+- name: Install utilities common
+  become: '{{ install_sudo }}'
+  package:
+    name:
+      # archive
+      # - atool
+      - p7zip
+      - unzip
+      - zip
+      - bzip2
+      - gzip
+      - tar
+      # download
+      - aria2
+      - curl
+      - wget
+      # sync
+      - rsync
+      # terminal
+      - vim
+      - net-tools
+      - nmap
+      - dnsutils
+      # compilers
+      - gcc
+    state: present
+
+- name: Install arch specific utilities
+  become: '{{ install_sudo }}'
+  package:
+    name:
+      - xz
+      - unrar
+      - iputils
+      - gnu-netcat
+      - libsecret
+    state: present
+  when: ansible_distribution == 'Archlinux'
+
+- name: Install utilities ubuntu/debian
+  become: '{{ install_sudo }}'
+  package:
+    name:
+      - xz-utils
+      - unrar-free
+    state: present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

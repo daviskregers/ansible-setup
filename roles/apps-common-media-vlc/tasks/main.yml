@@ -1,0 +1,4 @@
+- name: install vlc
+  become: '{{ install_sudo }}'
+  package:
+    name: vlc

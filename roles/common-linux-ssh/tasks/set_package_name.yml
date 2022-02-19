@@ -1,0 +1,7 @@
+- set_fact:
+    ssh_package: openssh
+  when: ansible_distribution == 'Archlinux'
+
+- set_fact:
+    ssh_package: openssh-server
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'

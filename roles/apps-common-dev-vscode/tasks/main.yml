@@ -1,0 +1,10 @@
+- name: Install VS Code
+  become: true
+  pacman:
+    name: code
+  when: ansible_distribution != 'MacOSX'
+
+- name: Install VS Code
+  homebrew_cask:
+    name: visual-studio-code
+  when: ansible_distribution == 'MacOSX'

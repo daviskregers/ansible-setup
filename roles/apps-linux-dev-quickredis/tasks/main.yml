@@ -1,0 +1,5 @@
+- name: install quickredis
+  become: '{{ install_sudo }}'
+  yay:
+    name: quickredis
+  when: ansible_distribution != 'MacOSX'

@@ -1,0 +1,9 @@
+- name: install synergy
+  become: '{{ install_sudo }}'
+  yay:
+    name: synergy1-bin
+  when: ansible_distribution != 'MacOSX'
+- name: install synergy
+  homebrew_cask:
+    name: synergy
+  when: ansible_distribution == 'MacOSX'

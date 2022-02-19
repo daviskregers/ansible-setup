@@ -1,0 +1,10 @@
+- name: install Authy
+  become: '{{ install_sudo }}'
+  yay:
+    name: authy
+  when: ansible_distribution != 'MacOSX'
+
+- name: install Authy
+  homebrew_cask:
+    name: authy
+  when: ansible_distribution == 'MacOSX'

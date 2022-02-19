@@ -1,0 +1,5 @@
+- name: Ensure yay is installed
+  become: true
+  aur:
+    user: "{{ ansible_facts['user_id'] }}"
+    name: yay

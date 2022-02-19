@@ -1,0 +1,10 @@
+- name: install obs-studio
+  become: true
+  pacman:
+    name: obs-studio
+  when: ansible_distribution != 'MacOSX'
+
+- name: install obs-studio
+  homebrew:
+    name: obs
+  when: ansible_distribution == 'MacOSX'

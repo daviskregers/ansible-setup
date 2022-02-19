@@ -1,0 +1,9 @@
+- name: install weylus
+  become: '{{ install_sudo }}'
+  yay:
+    name: weylus-bin
+  notify:
+    - create input group
+    - assign user to input group
+    - copy weylus rules
+  when: ansible_distribution != 'MacOSX'

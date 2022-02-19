@@ -1,0 +1,7 @@
+- name: Install tmux
+  become: '{{ install_sudo }}'
+  package:
+    name:
+      - tmux
+      - tmuxp
+    state: present

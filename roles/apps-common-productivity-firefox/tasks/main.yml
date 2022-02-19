@@ -1,0 +1,10 @@
+- name: install firefox
+  become: true
+  pacman:
+    name: firefox
+  when: ansible_distribution != 'MacOSX'
+
+- name: install firefox
+  homebrew_cask:
+    name: firefox
+  when: ansible_distribution == 'MacOSX'

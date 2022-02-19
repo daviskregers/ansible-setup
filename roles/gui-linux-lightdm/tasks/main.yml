@@ -1,0 +1,13 @@
+- name: Install lightdm
+  become: true
+  package:
+    name:
+      - lightdm
+      - lightdm-gtk-greeter
+      - lightdm-webkit2-greeter
+    state: present
+- name: Enable lightdm
+  become: true
+  systemd:
+    name: lightdm.service
+    enabled: true

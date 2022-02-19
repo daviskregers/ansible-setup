@@ -1,0 +1,12 @@
+- name: install virtualbox
+  become: true
+  pacman:
+    name:
+      - virtualbox
+  when: ansible_distribution != 'MacOSX'
+
+- name: install virtualbox
+  homebrew_cask:
+    name:
+      - virtualbox
+  when: ansible_distribution == 'MacOSX'

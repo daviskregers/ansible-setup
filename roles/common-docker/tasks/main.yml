@@ -1,0 +1,60 @@
+- name: check if rules file exists
+  stat:
+    path: /bin/docker
+  register: docker_binary
+
+# TODO: docker-scan-arm64
+
+- name: Download docker installation
+  get_url:
+    url: https://get.docker.com
+    dest: /tmp/get-docker.sh
+    mode: a+x
+  when: ansible_distribution != 'MacOSX' and ansible_distribution != 'Archlinux' and docker_binary.stat.exists == false
+
+- name : Install get-docker
+  become: true
+  command: /tmp/get-docker.sh
+  when: ansible_distribution != 'MacOSX' and ansible_distribution != 'Archlinux' and docker_binary.stat.exists == false
+
+- name: Install Docker
+  become: '{{ install_sudo }}'
+  package:
+    name:
+      - docker
+      - docker-compose
+  when: ansible_distribution == 'Archlinux'
+
+- name: Install Docker
+  homebrew_cask:
+    name:
+      - docker
+  when: ansible_distribution == 'MacOSX'
+
+- name: install pip
+  become: '{{ install_sudo }}'
+  package:
+    name:
+      - python-pip
+  when: ansible_distribution == 'Archlinux'
+
+- name: install pip
+  become: '{{ install_sudo }}'
+  package:
+    name:
+      - python3-pip
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: Install SDK for Python
+  become:  true 
+  ansible.builtin.pip:
+    name:
+      - docker
+
+- name: enable docker
+  become: true
+  systemd:
+    name: docker
+    enabled: true
+    state: started
+  when: ansible_distribution != 'MacOSX'

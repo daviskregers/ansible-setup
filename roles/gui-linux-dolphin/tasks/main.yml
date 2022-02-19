@@ -1,0 +1,26 @@
+- name: Install dolphin
+  become: true
+  package:
+    name:
+      - dolphin
+      - breeze
+      - dolphin-plugins
+      - kvantum-qt5
+      - qt5ct
+      - baloo
+      - taglib
+      - kdegraphics-thumbnailers
+      - kdegraphics-thumbnailers
+      - qt5-imageformats
+      - kimageformats
+      - ffmpegthumbs
+      - ffmpegthumbnailer
+      - audiocd-kio
+      - ntfs-3g
+    state: present
+  notify: Enable baloo
+- name: copy policy
+  become: true
+  copy:
+    src: org.freedesktop.UDisks2.policy
+    dest: /usr/share/polkit-1/actions/org.freedesktop.UDisks2.policy

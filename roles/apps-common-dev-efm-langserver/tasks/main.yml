@@ -1,0 +1,4 @@
+- name: Install efm-langserver
+  become: '{{ install_sudo }}'
+  package:
+    name: efm-langserver

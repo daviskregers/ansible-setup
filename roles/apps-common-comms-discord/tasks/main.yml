@@ -1,0 +1,10 @@
+- name: install discord
+  become: true
+  pacman:
+    name: discord
+  when: ansible_distribution != 'MacOSX'
+
+- name: install discord
+  homebrew_cask:
+    name: discord
+  when: ansible_distribution == 'MacOSX'

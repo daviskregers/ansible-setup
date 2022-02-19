@@ -1,0 +1,10 @@
+- name: install wezterm
+  become: '{{ install_sudo }}'
+  yay:
+    name: wezterm-nightly-bin
+  when: ansible_distribution == 'Archlinux'
+
+- name: install wezterm
+  homebrew_cask:
+    name: wezterm
+  when: ansible_distribution == 'MacOSX'

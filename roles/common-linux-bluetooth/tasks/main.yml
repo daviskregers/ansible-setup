@@ -1,0 +1,21 @@
+- name: Install bluetooth drivers
+  become: true
+  pacman:
+    name:
+      - bluez
+      - bluez-utils
+      - blueberry
+    state: present
+  notify: Enable Bluetooth
+- name: Add user to rfkill
+  become: true
+  user:
+    name: "{{ ansible_facts['user_id'] }}"
+    groups: 'rfkill'
+    append: yes
+- name: Copy configuration
+  become: true
+  replace:
+    path: /etc/bluetooth/main.conf
+    regexp: "#AutoEnable=false"
+    replace: "AutoEnable=true"

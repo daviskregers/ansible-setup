@@ -1,0 +1,20 @@
+- name: Install audio drivers
+  become: true
+  package:
+    name:
+      - pulseaudio
+      - pavucontrol
+      - playerctl
+      - alsa-utils
+      - pulseaudio-alsa
+      - pulseaudio-bluetooth
+      - pulseaudio-equalizer
+      - pulseaudio-jack
+      - pulseaudio-zeroconf
+      - kmix
+    state: present
+- name: Install alsa-tray
+  become: '{{ install_sudo }}'
+  yay:
+    name: alsa-tray
+    state: present

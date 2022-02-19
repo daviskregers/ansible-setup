@@ -1,0 +1,4 @@
+- name: install ctags
+  become: '{{ install_sudo }}'
+  package:
+    name: ctags

@@ -1,0 +1,10 @@
+- name: install todoist
+  become: '{{ install_sudo }}'
+  yay:
+    name: todoist-electron
+  when: ansible_distribution != 'MacOSX'
+
+- name: install todoist
+  homebrew_cask:
+    name: todoist
+  when: ansible_distribution == 'MacOSX'

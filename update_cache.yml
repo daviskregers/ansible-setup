@@ -1,0 +1,15 @@
+- hosts: all
+  tasks:
+  - name: Update Package Cache (apt/Ubuntu)
+    become: '{{ install_sudo }}'
+    apt:
+      update_cache: yes
+    changed_when: false
+    when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+
+  - name: Update Package Cache (pacman/Archlinux)
+    become: '{{ install_sudo }}'
+    pacman:
+      update_cache: yes
+    changed_when: false
+    when: ansible_distribution == "Archlinux"

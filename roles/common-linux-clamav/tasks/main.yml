@@ -1,0 +1,49 @@
+- name: Install ClamAV
+  become: true
+  package:
+    name:
+      - clamav
+    state: latest
+
+- name: Install ClamAV
+  become: true
+  package:
+    name:
+      - clamav
+    state: latest
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
+
+- name: start freshclam
+  become: true
+  systemd:
+    name: clamav-freshclam
+    enabled: true
+    state: started
+
+- name: start freshclam
+  become: true
+  systemd:
+    name: clamav-freshclam
+    enabled: true
+    state: started
+
+- name: start clamav daemon
+  become: true
+  systemd:
+    name: clamav-daemon
+    enabled: true
+    state: started
+
+- name: make clamav script
+  become: true
+  template:
+    src: clamav.sh
+    dest: /opt/clamav.sh
+    mode: a+x
+
+- name: schedule clamav
+  become: true
+  cron:
+    name: "scan"
+    special_time: hourly
+    job: /opt/cronwrap -c "/opt/clamav.sh" --notify @here

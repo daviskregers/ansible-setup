@@ -1,0 +1,4 @@
+- name: Install albert
+  become: '{{ install_sudo }}'
+  yay:
+    name: albert

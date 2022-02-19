@@ -1,0 +1,5 @@
+- name: install flameshot
+  become: true
+  pacman:
+    name: flameshot
+  when: ansible_distribution != 'MacOSX'

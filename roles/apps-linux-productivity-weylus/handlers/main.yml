@@ -1,0 +1,17 @@
+- name: create input group
+  become: true
+  group:
+    name: input
+    state: present
+    system: yes
+- name: assign user to input group
+  become: true
+  user:
+    name: "{{ ansible_facts['user_id'] }}"
+    groups: 'input'
+    append: yes
+- name: copy weylus rules
+  become: true
+  copy:
+    src: 60-weylus.rules
+    dest: /etc/udev/rules.d/60-weylus.rules

@@ -1,0 +1,3 @@
+- name: upgrade
+  become: true
+  command: /opt/update-reminder/upgrade-packages

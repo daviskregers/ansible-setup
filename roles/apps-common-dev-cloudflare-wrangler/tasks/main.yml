@@ -1,0 +1,10 @@
+- name: install cloudflare wrangler
+  become: '{{ install_sudo }}'
+  yay:
+    name: cloudflare-wrangler-bin
+  when: ansible_distribution != 'MacOSX'
+
+- name: install cloudflare wrangler
+  homebrew:
+    name: cloudflare-wrangler
+  when: ansible_distribution == 'MacOSX'

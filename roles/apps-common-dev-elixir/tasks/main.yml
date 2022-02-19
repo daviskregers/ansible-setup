@@ -1,0 +1,15 @@
+- name: install elixir
+  become: '{{ install_sudo }}'
+  package:
+    name: elixir
+
+- name: install elixirls
+  become: '{{ install_sudo }}'
+  yay:
+    name: elixir-ls
+  when: ansible_distribution != 'MacOSX'
+
+- name: install elixirls
+  homebrew:
+    name: elixir-ls
+  when: ansible_distribution == 'MacOSX'

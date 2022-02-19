@@ -1,0 +1,10 @@
+- name: install slack
+  become: '{{ install_sudo }}'
+  yay:
+    name: slack-desktop
+  when: ansible_distribution != 'MacOSX'
+
+- name: install slack
+  homebrew_cask:
+    name: slack
+  when: ansible_distribution == 'MacOSX'

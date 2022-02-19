@@ -1,0 +1,22 @@
+# This playbook sets facts whether we need sudo to install packages
+# For example, we don't need sudo for homebrew to install stuff
+
+- hosts: all
+  tasks:
+    - name: print
+      debug:
+        var: ansible_distribution
+
+    - name: Check whether sudo is required for packages
+      set_fact:
+        install_sudo: true
+      when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian' or ansible_distribution == 'Archlinux'
+
+    - name: Check whether sudo is required for packages
+      set_fact:
+        install_sudo: false
+      when: ansible_distribution == 'MacOSX'
+
+    - name: Debug install_sudo
+      debug:
+        msg: '{{ ansible_distribution }}, install sudo: {{ install_sudo }}'

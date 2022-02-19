@@ -1,0 +1,10 @@
+- name: install spotify
+  become: '{{ install_sudo }}'
+  yay:
+    name: spotify
+  when: ansible_distribution != 'MacOSX'
+
+- name: install spotify
+  homebrew_cask:
+    name: spotify
+  when: ansible_distribution == 'MacOSX'

@@ -1,0 +1,33 @@
+- name: mkdir
+  become: true
+  file:
+    path: /opt/update-reminder
+    state: directory
+
+- name: setup download-packages.sh
+  become: true
+  copy:
+    src: download-packages
+    dest: /opt/update-reminder/download-packages
+    mode: a+x
+
+- name: setup is-offline-updates-ready
+  become: true
+  copy:
+    src: is-offline-updates-ready
+    dest: /opt/update-reminder/is-offline-updates-ready
+    mode: a+x
+
+- name: setup upgrade-packages
+  become: true
+  copy:
+    src: upgrade-packages
+    dest: /opt/update-reminder/upgrade-packages
+    mode: a+x
+
+- name: schedule package download
+  become: true
+  cron:
+    name: "package download"
+    minute: "1"
+    job: /opt/cronwrap -c "/usr/bin/env bash /opt/update-reminder/download-packages --download" --notify @here

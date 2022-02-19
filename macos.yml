@@ -1,0 +1,90 @@
+- import_playbook: pkg_require_sudo.yml
+- hosts: mac
+  vars:
+    dockitems_remove:
+      - 'App Store'
+      - Contacts
+      - FaceTime
+      - Maps
+      - Messages
+      - Music
+      - Notes
+      - Photos
+      - Podcasts
+      - Reminders
+      - System Preferences
+      - TV
+    dockitems_persist:
+      - name: Launchpad
+        path: "/System/Applications/Launchpad.app/"
+        pos: 1
+      - name: Safari
+        path: "/Applications/Safari.app/"
+        pos: 2
+      - name: Google Chrome
+        path: "/Applications/Google Chrome.app/"
+        pos: 3
+      - name: Mail
+        path: "/System/Applications/Mail.app/"
+        pos: 4
+      - name: Calendar
+        path: "/System/Applications/Calendar.app/"
+        pos: 5
+      - name: Authy Desktop
+        path: "/Applications/Authy Desktop.app/"
+        pos: 6
+      - name: WezTerm
+        path: "/Applications/WezTerm.app/"
+        pos: 7
+      - name: Notion
+        path: "/Applications/Notion.app/"
+        pos: 8
+      - name: Todoist
+        path: "/Applications/Todoist.app/"
+        pos: 9
+      - name: Slack
+        path: "/Applications/Slack.app/"
+        pos: 10
+      - name: Spotify
+        path: "/Applications/Spotify.app/"
+        pos: 11
+  roles:
+    - geerlingguy.mac.homebrew
+    - geerlingguy.mac.dock
+    - common-git
+    - common-homeshick
+    - common-fonts
+    - common-tmux
+    - common-zsh
+    - common-docker
+    - common-watchtower
+    - common-update-reminder
+    - apps-common-comms-discord
+    - apps-common-comms-signal
+    - apps-common-comms-slack
+    - apps-common-comms-zoom
+    - apps-common-dev-aws-cli
+    - apps-common-dev-cloudflare-wrangler
+    - apps-common-dev-ctags
+    - apps-common-dev-dbeaver
+    - apps-common-dev-efm-langserver
+    - apps-common-dev-elixir
+    - apps-common-dev-haskell
+    - apps-common-dev-jupyter
+    - apps-common-dev-neovim
+    - apps-common-dev-nodejs
+    - apps-common-dev-php
+    - apps-common-dev-postman
+    - apps-linux-dev-quickredis
+    - apps-common-dev-terraform
+    - apps-common-dev-virtualbox
+    - apps-common-dev-vscode
+    - apps-common-linux-mailspring
+    - apps-common-media-spotify
+    - apps-common-productivity-authy
+    - apps-common-productivity-chrome
+    - apps-common-productivity-firefox
+    - apps-common-productivity-notion
+    - apps-common-productivity-synergy
+    - apps-common-productivity-todoist
+    - apps-common-productivity-wezterm

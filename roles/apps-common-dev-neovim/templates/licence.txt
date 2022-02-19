@@ -1,0 +1,1 @@
+{{ neovim.intelephense.licence }}

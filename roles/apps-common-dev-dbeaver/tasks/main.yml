@@ -1,0 +1,16 @@
+- name: install dbeaver
+  become: '{{ install_sudo }}'
+  yay:
+    name: dbeaver
+  when: ansible_distribution != 'MacOSX'
+
+- name: install dbeaver
+  homebrew_cask:
+    name: dbeaver-community
+  when: ansible_distribution == 'MacOSX'
+
+- name: install dbeaver dependencies
+  become: true
+  pacman:
+    name: mariadb-clients
+  when: ansible_distribution != 'MacOSX'

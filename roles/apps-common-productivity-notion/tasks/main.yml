@@ -1,0 +1,10 @@
+- name: install notion
+  become: '{{ install_sudo }}'
+  yay:
+    name: notion-app
+  when: ansible_distribution != 'MacOSX'
+
+- name: install notion
+  homebrew_cask:
+    name: notion
+  when: ansible_distribution == 'MacOSX'
