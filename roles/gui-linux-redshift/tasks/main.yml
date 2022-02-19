@@ -1,3 +1,10 @@
+- name: Copy custom script
+  become: true
+  copy:
+    src: launch_redshift
+    dest: /usr/bin/launch_redshift
+    mode: a+x
+
 - name: install redshify
   become: '{{ install_sudo }}'
   package:
