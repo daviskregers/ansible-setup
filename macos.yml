@@ -59,6 +59,7 @@
     - common-docker
     - common-watchtower
     - common-update-reminder
+    - common-topgrade
     - gui-common-protonmail-bridge
     - apps-common-comms-discord
     - apps-common-comms-signal
