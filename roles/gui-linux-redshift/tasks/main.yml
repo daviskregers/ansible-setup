@@ -1,0 +1,4 @@
+- name: install redshify
+  become: '{{ install_sudo }}'
+  package:
+    name: redshift

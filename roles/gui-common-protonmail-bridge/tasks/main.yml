@@ -1,0 +1,10 @@
+- name: Install protonmail bridge
+  become: '{{ install_sudo }}'
+  yay:
+    name: protonmail-bridge-bin
+  when: ansible_distribution == 'Archlinux'
+
+- name: Install protonmail bridge
+  homebrew:
+    name: protonmail-bridge
+  when: ansible_distribution == 'MacOSX'

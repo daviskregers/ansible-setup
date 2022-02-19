@@ -1,0 +1,4 @@
+- name: install networkmanager-openvpn
+  become: '{{ install_sudo }}'
+  package:
+    name: networkmanager-openvpn

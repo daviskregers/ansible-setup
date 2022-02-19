@@ -22,16 +22,19 @@
     - common-linux-ssh
     - common-linux-time
     - common-linux-utils
+    - common-linux-openvpn
     - common-topgrade
     - common-update-reminder
-    - gui-linux-xorg
-    - gui-linux-xmonad
-    - gui-linux-numlock
-    - gui-linux-tools
+    - gui-common-protonmail-bridge
     - gui-linux-albert
     - gui-linux-dolphin
     - gui-linux-lightdm
+    - gui-linux-numlock
+    - gui-linux-redshift
     - gui-linux-screenlayout
+    - gui-linux-tools
+    - gui-linux-xmonad
+    - gui-linux-xorg
     - apps-common-comms-discord
     - apps-common-comms-signal
     - apps-common-comms-slack
