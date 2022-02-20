@@ -19,8 +19,20 @@
       - ntfs-3g
     state: present
   notify: Enable baloo
+
 - name: copy policy
   become: true
   copy:
     src: org.freedesktop.UDisks2.policy
     dest: /usr/share/polkit-1/actions/org.freedesktop.UDisks2.policy
+
+- name: add QT_QPA_PLATFORMTHEME to environment
+  become: true
+  lineinfile:
+    dest: "/etc/environment"
+    state: present
+    regexp: "^{{ item.key }}="
+    line: "{{ item.key }}={{ item.value}}"
+  with_items:
+    - key: QT_QPA_PLATFORMTHEME
+      value: qt5ct
