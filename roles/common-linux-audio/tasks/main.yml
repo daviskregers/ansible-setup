@@ -13,8 +13,30 @@
       - pulseaudio-zeroconf
       - kmix
     state: present
+
 - name: Install alsa-tray
   become: '{{ install_sudo }}'
   yay:
     name: alsa-tray
     state: present
+
+- name: Install change sound device script
+  become: true
+  copy:
+    src: change-sound-device
+    dest: /usr/bin/change-sound-device
+    mode: a+x
+
+- name: Install change sound device script
+  become: true
+  copy:
+    src: change-sound-device
+    dest: /usr/bin/change-sound-device
+    mode: a+x
+
+- name: Install launch volume control script
+  become: true
+  copy:
+    src: launch-volume-control
+    dest: /usr/bin/launch-volume-control
+    mode: a+x

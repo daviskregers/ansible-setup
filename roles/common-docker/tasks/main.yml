@@ -46,7 +46,7 @@
   when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Debian'
 
 - name: Install SDK for Python
-  become:  true 
+  become:  true
   ansible.builtin.pip:
     name:
       - docker

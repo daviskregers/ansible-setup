@@ -27,6 +27,11 @@
   systemd:
     name: cronie
     enabled: true
+
+- name: restart cronie
+  become: true
+  systemd:
+    name: cronie
     state: restarted
 
 - name: schedule clamav

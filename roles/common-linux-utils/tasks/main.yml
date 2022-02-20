@@ -30,6 +30,7 @@
       - dnsutils
       # compilers
       - gcc
+      - brightnessctl
     state: present
 
 - name: Install arch specific utilities
@@ -52,3 +53,10 @@
       - unrar-free
     state: present
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Install brightnes control script
+  become: true
+  copy:
+    src: change-brightness
+    dest: /usr/bin/change-brightness
+    mode: a+x
