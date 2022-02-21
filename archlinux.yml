@@ -43,10 +43,11 @@
     - apps-common-dev-cloudflare-wrangler
     - apps-common-dev-ctags
     - apps-common-dev-dbeaver
-    - apps-common-dev-elixir
     - apps-common-dev-efm-langserver
+    - apps-common-dev-elixir
     - apps-common-dev-haskell
     - apps-common-dev-jupyter
+    - apps-common-dev-localstack
     - apps-common-dev-neovim
     - apps-common-dev-nodejs
     - apps-common-dev-php
