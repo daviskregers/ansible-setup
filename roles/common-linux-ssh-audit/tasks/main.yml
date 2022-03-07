@@ -1,0 +1,17 @@
+- name: Install ssh audit
+  become: '{{ install_sudo }}'
+  package:
+    name: ssh-audit
+- name: Install ssh cron script
+  become: true
+  copy:
+    src: run-ssh-audit
+    dest: /opt/run-ssh-audit
+    mode: a+x
+- name: schedule ssh audit
+  become: true
+  cron:
+    name: "ssh audit"
+    minute: "0"
+    hour: "*/4"
+    job: /opt/cronwrap -c "/opt/run-ssh-audit" --notify @here

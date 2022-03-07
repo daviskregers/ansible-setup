@@ -20,3 +20,10 @@
     scope: global
     value: '{{ git.user.name }}'
   when: git.user.name is defined
+
+- name: Add a setting to use main as the default branch
+  become: false
+  community.general.git_config:
+    name: init.defaultBranch
+    scope: global
+    value: main

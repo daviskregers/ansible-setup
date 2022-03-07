@@ -1,0 +1,4 @@
+- name: Install 1Password
+  become: true
+  snap:
+    name: 1password

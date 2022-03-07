@@ -24,6 +24,7 @@ ansible-playbook foo.yml --check --diff --limit foo.example.com
 
 ```
 ansible-galaxy collection install geerlingguy.mac
+ansible-galaxy install gantsign.visual-studio-code-extensions
 ```
 
 ## Virtualization on mac

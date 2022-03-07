@@ -1,0 +1,11 @@
+#!/bin/bash
+FILE_PATH=/tmp/lynis-audit.out
+
+set -xe
+
+touch /etc/lynis/custom.prf
+lynis configure settings strict=1
+lynis configure settings error-on-warnings=yes
+lynis audit system --report-file $FILE_PATH
+
+exit $?

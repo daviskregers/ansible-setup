@@ -73,10 +73,10 @@
     - apps-common-dev-elixir
     - apps-common-dev-haskell
     - apps-common-dev-jupyter
-    - apps-common-dev-localstack
     - apps-common-dev-neovim
     - apps-common-dev-nodejs
     - apps-common-dev-php
+    - apps-common-dev-serverless
     - apps-common-dev-postman
     - apps-linux-dev-quickredis
     - apps-common-dev-terraform

@@ -120,6 +120,7 @@ myStartupHook = do
     spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x000000  --height 22 &"
     spawnOnce "setxkbmap lv -variant apostrophe"
     spawnOnce "enable-numlock-if-var"
+    -- spawnOnce "launch-xob"
     setWMName "LG3D"
 
 -- Colors
@@ -161,7 +162,8 @@ scratchpads = [
                     NS "slack" "slack" (className =? "Slack") (customFloating $ center 0.9 0.9),
                     NS "spotify" "spotify" (className =? "Spotify") (customFloating $ center 0.6 0.6),
                     NS "terminal" "wezterm start --class terminal" (className =? "terminal") (customFloating $ center 0.6 0.6),
-                    NS "todo" "todoist" (className =? "Todoist") (customFloating $ center 0.6 0.9)
+                    NS "todo" "todoist" (className =? "Todoist") (customFloating $ center 0.6 0.9),
+                    NS "1password" "1password" (className =? "1Password") (customFloating $ center 0.6 0.9)
                 ]
                 where center w h = W.RationalRect ((1 - w) / 2) ((1 - h) / 2) w h
 
@@ -295,15 +297,15 @@ myKeys = [
         ("M-q",                    spawn "pkill xmobar; xmonad --recompile; xmonad --restart"),
     -- KB_GROUP Multimedia Keys
         ("<Print>",                spawn "flameshot gui"),
-        ("<XF86AudioLowerVolume>", spawn "amixer -D pulse sset Master 1%- unmute"),
-        ("<XF86AudioMute>",        spawn "amixer -D pulse sset Master toggle"),
+        ("<XF86AudioLowerVolume>", spawn "amixer -D pulse sset Master 1%- unmute | audioxob"),
+        ("<XF86AudioMute>",        spawn "amixer -D pulse sset Master toggle | audioxob"),
         ("<XF86AudioNext>",        spawn "playerctl next"),
         ("<XF86AudioPlay>",        spawn "playerctl play-pause"),
         ("<XF86AudioPrev>",        spawn "playerctl previous"),
-        ("<XF86AudioRaiseVolume>", spawn "amixer -D pulse sset Master 1%+ unmute"),
+        ("<XF86AudioRaiseVolume>", spawn "amixer -D pulse sset Master 1%+ unmute | audioxob"),
         ("<XF86AudioStop>",        spawn "playerctl stop"),
-        ("<XF86MonBrightnessUp>",  spawn "change-brightness 5%+"),
-        ("<XF86MonBrightnessDown>",  spawn "change-brightness 5%-"),
+        ("<XF86MonBrightnessUp>",  spawn "change-brightness 5%+ | xob"),
+        ("<XF86MonBrightnessDown>",  spawn "change-brightness 5%- | xob"),
         ("M-<Print>",              spawn "peek"),
     -- KB_GROUP TODO SORT OUT
         ("M-,",                    sendMessage (IncMasterN 1)),
@@ -327,7 +329,7 @@ myKeys = [
         ("M-S-m",                  namedScratchpadAction scratchpads "spotify"),
         ("M-S-,",                  namedScratchpadAction scratchpads "mailspring"),
         ("M-S-n",                  namedScratchpadAction scratchpads "notion"),
-        ("M-S-p",                  spawn "gmrun"),
+        ("M-S-p",                  namedScratchpadAction scratchpads "1password"),
         ("M-S-q",                  kill),
         ("M-S-s",                  namedScratchpadAction scratchpads "slack"),
         ("M-S-t",                  namedScratchpadAction scratchpads "todo"),

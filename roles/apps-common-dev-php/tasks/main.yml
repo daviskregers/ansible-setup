@@ -29,6 +29,20 @@
   with_items:
     - "{{ php.extensions }}"
 
+- name: disable expose
+  become: true
+  lineinfile:
+    path: /etc/php/php.ini
+    regex: '^expose_php ='
+    line: 'expose_php = Off'
+
+- name: disable url fopen
+  become: true
+  lineinfile:
+    path: /etc/php/php.ini
+    regex: '^allow_url_fopen ='
+    line: 'allow_url_fopen = Off'
+
 - name: install composer
   become: '{{ install_sudo }}'
   package:

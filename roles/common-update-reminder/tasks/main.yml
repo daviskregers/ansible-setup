@@ -29,5 +29,5 @@
   become: true
   cron:
     name: "package download"
-    minute: "1"
+    minute: "0"
     job: /opt/cronwrap -c "/usr/bin/env bash /opt/update-reminder/download-packages --download" --notify @here

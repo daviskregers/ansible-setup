@@ -15,5 +15,5 @@ for S in ${DIRTOSCAN}; do
          curl -X POST --data-urlencode "payload={\"channel\": \"$CHANNEL\", \"mrkdwn\": true, \"username\": \"ssh-bot\", $content, \"icon_emoji\": \":computer:\"}" $URL
     fi
 done
-curl -X POST --data-urlencode "payload={\"channel\": \"$CHANNEL\", \"mrkdwn\": true, \"username\": \"ssh-bot\", \"text\": \"CLAMAV scan on \`$HOST\` finished.\", \"icon_emoji\": \":computer:\"}" $URL
+#curl -X POST --data-urlencode "payload={\"channel\": \"$CHANNEL\", \"mrkdwn\": true, \"username\": \"ssh-bot\", \"text\": \"CLAMAV scan on \`$HOST\` finished.\", \"icon_emoji\": \":computer:\"}" $URL
 exit 0

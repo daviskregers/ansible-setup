@@ -1,0 +1,20 @@
+#!/bin/bash
+set -xe
+
+PIPE=/tmp/xobpipe
+
+if [ ! test -f $PIPE ];
+then
+    echo "making pipe"
+    mkfifo $PIPE
+    tail -f $PIPE | xob &
+else
+    echo "pipe already exists"
+fi
+
+if [ "$#" -ne 0 ]
+then
+        printf '%s\n' "$1"
+else
+        cat
+fi | grep -oP '(\d+)%' | head -1 | sed 's|%||g' >> $PIPE

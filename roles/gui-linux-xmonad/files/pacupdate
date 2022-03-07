@@ -1,4 +1,25 @@
 #!/bin/bash
+set -xe
 
-cupd=$(checkupdates | wc -l)
-echo "$cupd updates "
+LOCKFILE=/tmp/pacupdate.lock
+TIMESTAMP=$(date -d "today" +"%Y%m%d%H%M")
+OUTPUT=/tmp/pacupdate-$TIMESTAMP.out
+
+function wait_for_lock() {
+  if { set -C; 2>/dev/null >$LOCKFILE; }; then
+    trap "rm -f $LOCKFILE" EXIT
+  else
+    sleep 1
+    wait_for_lock
+  fi
+}
+
+wait_for_lock
+
+if [ ! -f "$OUTPUT" ];
+then
+  cupd=$(checkupdates | wc -l)
+  echo "$cupd updates" > $OUTPUT
+fi
+
+cat $OUTPUT

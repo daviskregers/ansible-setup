@@ -1,0 +1,17 @@
+- name: Install lynis
+  become: '{{ install_sudo }}'
+  package:
+    name: lynis
+- name: Install lynis script
+  become: true
+  copy:
+    src: run-lynis
+    dest: /opt/run-lynis
+    mode: a+x
+- name: Schedule lynis
+  become: true
+  cron:
+    name: "lynis scan"
+    minute: "0"
+    hour: "*/4"
+    job: /opt/cronwrap -c "/opt/run-lynis" --notify @here

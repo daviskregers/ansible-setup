@@ -116,16 +116,21 @@ Subsystem	sftp	/usr/lib/ssh/sftp-server
 #	PermitTTY no
 #	ForceCommand cvs server
 
+AllowAgentForwarding no
+AllowTcpForwarding yes
 Banner /etc/ssh/motd
-ClientAliveCountMax 5
+ClientAliveCountMax 2
 ClientAliveInterval 60
+Compression no
 IgnoreRhosts yes
 LogLevel INFO
 MaxAuthTries 3
+MaxSessions 2
 PasswordAuthentication yes
 PermitEmptyPasswords no
 PermitRootLogin no
 Protocol 2
+TCPKeepAlive no
 
 # Restrict key exchange, cipher, and MAC algorithms, as per sshaudit.com
 # hardening guide.

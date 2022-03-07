@@ -13,18 +13,22 @@
     - common-watchtower
     - common-linux-audio
     - common-linux-bluetooth
-    - common-linux-cron
     - common-linux-clamav
+    - common-linux-cron
     - common-linux-fail2ban
     - common-linux-firewall
     - common-linux-locale
     - common-linux-nvidia
+    - common-linux-openvpn
+    - common-linux-snapd
     - common-linux-ssh
     - common-linux-time
     - common-linux-utils
-    - common-linux-openvpn
     - common-topgrade
     - common-update-reminder
+    - common-linux-ssh-audit
+    - common-linux-lynis
+    - common-linux-hardening
     - gui-common-protonmail-bridge
     - gui-linux-albert
     - gui-linux-dolphin
@@ -35,6 +39,7 @@
     - gui-linux-tools
     - gui-linux-xmonad
     - gui-linux-xorg
+    - gui-common-1password
     - apps-common-comms-discord
     - apps-common-comms-signal
     - apps-common-comms-slack
@@ -47,10 +52,10 @@
     - apps-common-dev-elixir
     - apps-common-dev-haskell
     - apps-common-dev-jupyter
-    - apps-common-dev-localstack
     - apps-common-dev-neovim
     - apps-common-dev-nodejs
     - apps-common-dev-php
+    - apps-common-dev-serverless
     - apps-common-dev-postman
     - apps-linux-dev-quickredis
     - apps-common-dev-terraform

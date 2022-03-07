@@ -9,11 +9,16 @@
       - network-manager-applet
       - btop
       - gnome-keyring
+      - pacman-contrib
     state: present
 - name: Install xmobar
   become: '{{ install_sudo }}'
   yay:
     name: xmobar-git
+- name: Install xob
+  become: '{{ install_sudo }}'
+  yay:
+    name: xob
 - name: copy xsession
   become: false
   copy:
@@ -24,6 +29,16 @@
   file:
     path: ~/.local/bin
     state: directory
+- name: copy audioxob
+  copy:
+    src: audioxob
+    dest: ~/.local/bin/audioxob
+    mode: a+x
+# - name: copy launch-xob
+#   copy:
+#     src: launch-xob
+#     dest: ~/.local/bin/launch-xob
+#     mode: a+x
 - name: copy pacupdate
   become: false
   copy:

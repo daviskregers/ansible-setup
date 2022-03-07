@@ -1,0 +1,18 @@
+- name: Install snapd
+  become: '{{ install_sudo }}'
+  yay:
+    name: snapd
+
+- name: enable snapd socket
+  become: true
+  systemd:
+    name: snapd.socket
+    enabled: true
+    state: started
+
+- name: symlink snap
+  become: true
+  file:
+    src: /var/lib/snapd/snap
+    dest: /snap
+    state: link

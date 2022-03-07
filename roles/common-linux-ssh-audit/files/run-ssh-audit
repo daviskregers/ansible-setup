@@ -1,0 +1,16 @@
+#!/bin/bash
+FILE_PATH=/tmp/ssh-scan.out
+cap () { tee $FILE_PATH; }
+ret () { cat $FILE_PATH; }
+
+ssh-audit 127.0.0.1 -b --level warn | cap
+
+output=$(ret | xargs)
+
+if [ -n "$output" ]; then
+  echo "issues found!"
+  exit 1
+fi
+
+echo "All good!"
+exit 0
