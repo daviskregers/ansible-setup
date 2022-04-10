@@ -14,7 +14,7 @@
 - name: Install xmobar
   become: '{{ install_sudo }}'
   yay:
-    name: xmobar-git
+    name: xmobar
 - name: Install xob
   become: '{{ install_sudo }}'
   yay:

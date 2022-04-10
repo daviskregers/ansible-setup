@@ -1,6 +1,6 @@
 - name: install homeshick
   git:
-    repo: git://github.com/andsens/homeshick.git
+    repo: https://github.com/andsens/homeshick.git
     dest: ~/.homesick/repos/homeshick
     clone: yes
     update: yes

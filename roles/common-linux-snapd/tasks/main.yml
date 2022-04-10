@@ -1,3 +1,10 @@
+- name: Install snapd dependencies
+  become: '{{ install_sudo }}'
+  package:
+    name:
+      - fuse3
+      - squashfuse
+
 - name: Install snapd
   become: '{{ install_sudo }}'
   yay:

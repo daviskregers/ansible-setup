@@ -61,6 +61,7 @@
     - apps-common-dev-terraform
     - apps-common-dev-virtualbox
     - apps-common-dev-vscode
+    - apps-common-dev-zeal
     - apps-common-linux-mailspring
     - apps-common-media-spotify
     - apps-common-media-vlc

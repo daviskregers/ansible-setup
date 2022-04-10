@@ -11,6 +11,7 @@
 - name: Schedule lynis
   become: true
   cron:
+    state: absent
     name: "lynis scan"
     minute: "0"
     hour: "*/4"

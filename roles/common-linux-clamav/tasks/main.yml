@@ -44,6 +44,7 @@
 - name: schedule clamav
   become: true
   cron:
+    state: absent
     name: "scan"
     special_time: hourly
     job: /opt/cronwrap -c "/opt/clamav.sh" --notify @here

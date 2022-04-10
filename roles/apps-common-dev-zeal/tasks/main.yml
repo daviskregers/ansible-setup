@@ -1,10 +1,10 @@
-- name: install jupyter
+- name: install zeal
   become: '{{ install_sudo }}'
   yay:
-    name: jupyterlab
+    name: zeal
   when: ansible_distribution != 'MacOSX'
 
-- name: install jupyter
+- name: install dash
   homebrew_cask:
-    name: jupyterlab
+    name: dash
   when: ansible_distribution == 'MacOSX'
