@@ -47,3 +47,9 @@
   become: '{{ install_sudo }}'
   package:
     name: composer
+
+- name: install tools
+  composer:
+    command: require
+    global_command: yes
+    arguments: phpmd/phpmd squizlabs/php_codesniffer phpstan/phpstan vimeo/psalm friendsofphp/php-cs-fixer
