@@ -4,7 +4,7 @@
     name:
       - cudnn
       - mesa-demos
-      - nvidia
+    # - nvidia
       - nvidia-dkms
       - nvidia-settings
       - nvidia-utils

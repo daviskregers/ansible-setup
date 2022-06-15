@@ -3,6 +3,11 @@
   pacman:
     name: firefox
   when: ansible_distribution != 'MacOSX'
+- name: install profile switcher
+  become: '{{ install_sudo }}'
+  yay:
+    name: firefox-profile-switcher-connector
+  when: ansible_distribution != 'MacOSX'
 
 - name: install firefox
   homebrew_cask:
