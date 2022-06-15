@@ -1,0 +1,10 @@
+- name: install cachegrind
+  become: '{{ install_sudo }}'
+  package:
+    name: kcachegrind
+  when: ansible_distribution != 'MacOSX'
+
+- name: install cachegrind
+  homebrew:
+    name: qcachegrind
+  when: ansible_distribution == 'MacOSX'

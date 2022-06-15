@@ -1,7 +1,7 @@
 - name: install Authy
   become: '{{ install_sudo }}'
   yay:
-    name: authy
+    name: authy-electron
   when: ansible_distribution != 'MacOSX'
 
 - name: install Authy

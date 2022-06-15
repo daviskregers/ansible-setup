@@ -66,6 +66,7 @@
     - apps-common-comms-slack
     - apps-common-comms-zoom
     - apps-common-dev-aws-cli
+    - apps-common-dev-cachegrind
     - apps-common-dev-cloudflare-wrangler
     - apps-common-dev-ctags
     - apps-common-dev-dbeaver

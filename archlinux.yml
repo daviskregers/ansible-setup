@@ -57,6 +57,7 @@
     - apps-common-dev-php
     - apps-common-dev-serverless
     - apps-common-dev-postman
+    - apps-common-dev-cachegrind
     - apps-linux-dev-quickredis
     - apps-common-dev-terraform
     - apps-common-dev-virtualbox
