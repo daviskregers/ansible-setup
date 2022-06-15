@@ -1,0 +1,11 @@
+- name: Install github CLI
+  become: true
+  pacman:
+    name: github-cli
+  when: ansible_distribution != 'MacOSX'
+
+- name: Install github CLI
+  become: true
+  homebrew:
+    name: gh
+  when: ansible_distribution != 'MacOSX'

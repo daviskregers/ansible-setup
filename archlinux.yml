@@ -58,6 +58,7 @@
     - apps-common-dev-serverless
     - apps-common-dev-postman
     - apps-common-dev-cachegrind
+    - apps-common-dev-github-cli
     - apps-linux-dev-quickredis
     - apps-common-dev-terraform
     - apps-common-dev-virtualbox
