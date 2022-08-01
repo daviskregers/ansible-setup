@@ -1,7 +1,8 @@
 - name: Install neovim
   become: '{{ install_sudo }}'
   yay:
-    name: neovim-nightly-bin
+    # name: neovim-nightly-bin
+    name: neovim
   when: ansible_distribution == 'Archlinux'
 
 - name: Install neovim
@@ -39,3 +40,37 @@
     name:
       - ripgrep
   when: ansible_distribution != 'MacOSX'
+
+- name: install xsel
+  become: true
+  package:
+    name: xsel
+
+- name: install inotify-tools
+  become: true
+  package:
+    name: inotify-tools
+
+- name: install lazygit
+  become: true
+  package:
+    name: lazygit
+
+- name: install manpages
+  become: true
+  package:
+    name:
+      - man-pages
+      - man-db
+
+- name: install manpages
+  become: true
+  package:
+    name:
+      - ncdu
+
+- name: install manpages
+  become: true
+  package:
+    name:
+      - htop

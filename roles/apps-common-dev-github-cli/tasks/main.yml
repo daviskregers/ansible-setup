@@ -8,4 +8,4 @@
   become: true
   homebrew:
     name: gh
-  when: ansible_distribution != 'MacOSX'
+  when: ansible_distribution == 'MacOSX'

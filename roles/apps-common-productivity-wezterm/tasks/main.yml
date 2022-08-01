@@ -1,6 +1,7 @@
 - name: install wezterm
   become: '{{ install_sudo }}'
   yay:
+    #name: wezterm-nightly-bin
     name: wezterm-nightly-bin
   when: ansible_distribution == 'Archlinux'
 
