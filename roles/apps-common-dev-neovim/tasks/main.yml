@@ -45,16 +45,24 @@
   become: true
   package:
     name: xsel
+  when: ansible_distribution != 'MacOSX'
 
 - name: install inotify-tools
   become: true
   package:
     name: inotify-tools
+  when: ansible_distribution != 'MacOSX'
 
 - name: install lazygit
   become: true
   package:
     name: lazygit
+  when: ansible_distribution != 'MacOSX'
+
+- name: install lazygit
+  homebrew:
+    name: lazygit
+  when: ansible_distribution == 'MacOSX'
 
 - name: install manpages
   become: true
@@ -62,15 +70,29 @@
     name:
       - man-pages
       - man-db
+  when: ansible_distribution != 'MacOSX'
 
-- name: install manpages
+- name: install ncdu
   become: true
   package:
     name:
       - ncdu
+  when: ansible_distribution != 'MacOSX'
 
-- name: install manpages
+- name: install ncdu
+  homebrew:
+    name: ncdu
+  when: ansible_distribution == 'MacOSX'
+
+- name: install htop
   become: true
   package:
     name:
       - htop
+  when: ansible_distribution != 'MacOSX'
+
+- name: install htop
+  homebrew:
+    name:
+      - htop
+  when: ansible_distribution == 'MacOSX'

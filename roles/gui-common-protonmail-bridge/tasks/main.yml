@@ -4,7 +4,7 @@
     name: protonmail-bridge-bin
   when: ansible_distribution == 'Archlinux'
 
-- name: Install protonmail bridge
-  homebrew:
-    name: protonmail-bridge
-  when: ansible_distribution == 'MacOSX'
+# - name: Install protonmail bridge
+#   homebrew:
+#     name: protonmail-bridge
+#   when: ansible_distribution == 'MacOSX'

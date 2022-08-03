@@ -39,15 +39,12 @@
       - name: Notion
         path: "/Applications/Notion.app/"
         pos: 8
-      - name: Todoist
-        path: "/Applications/Todoist.app/"
-        pos: 9
       - name: Slack
         path: "/Applications/Slack.app/"
-        pos: 10
+        pos: 9
       - name: Spotify
         path: "/Applications/Spotify.app/"
-        pos: 11
+        pos: 10
   roles:
     - geerlingguy.mac.homebrew
     - geerlingguy.mac.dock
@@ -64,32 +61,29 @@
     - apps-common-comms-discord
     - apps-common-comms-signal
     - apps-common-comms-slack
-    - apps-common-comms-zoom
+    # - apps-common-comms-zoom
     - apps-common-dev-aws-cli
-    - apps-common-dev-cachegrind
+    # - apps-common-dev-cachegrind
     - apps-common-dev-cloudflare-wrangler
     - apps-common-dev-ctags
     - apps-common-dev-dbeaver
     - apps-common-dev-efm-langserver
     - apps-common-dev-elixir
-    - apps-common-dev-haskell
+    # - apps-common-dev-haskell
     - apps-common-dev-jupyter
     - apps-common-dev-neovim
     - apps-common-dev-nodejs
     - apps-common-dev-php
     - apps-common-dev-serverless
     - apps-common-dev-postman
-    - apps-common-dev-zeal
+    # - apps-common-dev-zeal
     - apps-linux-dev-quickredis
     - apps-common-dev-terraform
-    - apps-common-dev-virtualbox
     - apps-common-dev-vscode
-    - apps-common-linux-mailspring
     - apps-common-media-spotify
     - apps-common-productivity-authy
     - apps-common-productivity-chrome
     - apps-common-productivity-firefox
     - apps-common-productivity-notion
     - apps-common-productivity-synergy
-    - apps-common-productivity-todoist
     - apps-common-productivity-wezterm

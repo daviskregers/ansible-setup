@@ -15,3 +15,4 @@
       WATCHTOWER_SCHEDULE: "0 0 */2 * * *"
       WATCHTOWER_ROLLING_RESTART: "true"
       TZ: "{{ time.timezone | default('Europe/Riga') }}"
+  ignore_errors: true

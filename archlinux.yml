@@ -43,7 +43,7 @@
     - apps-common-comms-discord
     - apps-common-comms-signal
     - apps-common-comms-slack
-    - apps-common-comms-zoom
+    # - apps-common-comms-zoom
     - apps-common-dev-aws-cli
     - apps-common-dev-cloudflare-wrangler
     - apps-common-dev-ctags
@@ -57,11 +57,11 @@
     - apps-common-dev-php
     - apps-common-dev-serverless
     - apps-common-dev-postman
-    - apps-common-dev-cachegrind
+    # - apps-common-dev-cachegrind
     - apps-common-dev-github-cli
     - apps-linux-dev-quickredis
     - apps-common-dev-terraform
-    - apps-common-dev-virtualbox
+    # - apps-common-dev-virtualbox
     - apps-common-dev-vscode
     - apps-common-dev-zeal
     - apps-common-linux-mailspring
@@ -74,7 +74,7 @@
     - apps-common-productivity-notion
     - apps-common-productivity-obs
     - apps-common-productivity-synergy
-    - apps-common-productivity-todoist
+    # - apps-common-productivity-todoist
     - apps-common-productivity-wezterm
     - apps-linux-productivity-flameshot
     - apps-linux-productivity-peek
